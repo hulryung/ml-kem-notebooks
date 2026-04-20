@@ -176,3 +176,62 @@ def k_pke_decrypt(params: MLKEMParams, dk: bytes, ct: bytes) -> bytes:
     w = v - intt(acc)
     m_poly = compress(w, 1)
     return _bits_to_bytes(m_poly.coeffs.astype(np.uint8))
+
+
+# ======================================================================
+# ML-KEM wrapper (FO-transform) — FIPS 203 §7
+# ======================================================================
+import os as _os
+
+
+def _ml_kem_keygen_from_seeds(params: MLKEMParams, d: bytes, z: bytes) -> Tuple[bytes, bytes]:
+    assert len(d) == 32 and len(z) == 32
+    k_pke = k_pke_keygen(params, d)
+    ek = k_pke.ek
+    # dk = dk_pke || ek || H(ek) || z
+    h_ek = hashlib.sha3_256(ek).digest()
+    dk = k_pke.dk + ek + h_ek + z
+    return ek, dk
+
+
+def ml_kem_keygen(params: MLKEMParams) -> Tuple[bytes, bytes]:
+    """Algorithm 16 ML-KEM.KeyGen."""
+    return _ml_kem_keygen_from_seeds(params, _os.urandom(32), _os.urandom(32))
+
+
+def _ml_kem_encaps_from_seed(params: MLKEMParams, ek: bytes, m: bytes) -> Tuple[bytes, bytes]:
+    assert len(m) == 32
+    h_ek = hashlib.sha3_256(ek).digest()
+    g = hashlib.sha3_512(m + h_ek).digest()
+    K, r = g[:32], g[32:]
+    ct = k_pke_encrypt(params, ek, m, r)
+    return K, ct
+
+
+def ml_kem_encaps(params: MLKEMParams, ek: bytes) -> Tuple[bytes, bytes]:
+    """Algorithm 17 ML-KEM.Encaps."""
+    return _ml_kem_encaps_from_seed(params, ek, _os.urandom(32))
+
+
+def ml_kem_decaps(params: MLKEMParams, dk: bytes, ct: bytes) -> bytes:
+    """Algorithm 18 ML-KEM.Decaps.
+
+    FO-transform rejection branch: if re-encryption disagrees, return a
+    pseudo-random shared secret derived from z and the ciphertext rather
+    than a bogus key. This makes decryption failure indistinguishable.
+    """
+    dk_pke_len = 384 * params.k
+    ek_len = params.ek_bytes
+    dk_pke = dk[:dk_pke_len]
+    ek = dk[dk_pke_len : dk_pke_len + ek_len]
+    z = dk[dk_pke_len + ek_len + 32 :]
+    m_prime = k_pke_decrypt(params, dk_pke, ct)
+    h_ek = hashlib.sha3_256(ek).digest()
+    g = hashlib.sha3_512(m_prime + h_ek).digest()
+    K_prime, r_prime = g[:32], g[32:]
+    ct_prime = k_pke_encrypt(params, ek, m_prime, r_prime)
+    if ct == ct_prime:
+        return K_prime
+    # Implicit rejection: return pseudo-random K = SHAKE256(z || ct, 32)
+    h = hashlib.shake_256(); h.update(z + ct)
+    return h.digest(32)
