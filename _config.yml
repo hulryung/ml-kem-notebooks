@@ -8,6 +8,7 @@ only_build_toc_files: true
 exclude_patterns:
   - .venv
   - _build
+  - _extra
   - ko
   - tests
   - pqc_edu
@@ -39,6 +40,7 @@ sphinx:
     html_show_copyright: false
     html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/"
     html_static_path: ["_static"]
+    html_extra_path: ["_extra"]
     html_css_files:
       - custom.css
     html_js_files:
