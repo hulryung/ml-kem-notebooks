@@ -41,6 +41,7 @@ sphinx:
     html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/"
     html_static_path: ["_static"]
     html_extra_path: ["_extra"]
+    templates_path: ["_templates"]
     html_css_files:
       - custom.css
     html_js_files:
