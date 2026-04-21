@@ -36,8 +36,10 @@ sphinx:
   extra_extensions:
     - sphinx_sitemap
     - sphinxext.opengraph
+    - sphinx_last_updated_by_git
   config:
     html_show_copyright: false
+    html_last_updated_fmt: "%Y-%m-%dT%H:%M:%S+00:00"
     html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/"
     html_static_path: ["_static"]
     html_extra_path: ["_extra"]
@@ -51,6 +53,8 @@ sphinx:
       keywords: "post-quantum cryptography, PQC, ML-KEM, Kyber, FIPS 203, lattice cryptography, LWE, Ring-LWE, NTT, X25519, Python, tutorial, educational"
       author: "hulryung"
     sitemap_url_scheme: "{link}"
+    sitemap_show_lastmod: true
+    sitemap_indent: 2
     ogp_site_url: "https://hulryung.github.io/ml-kem-notebooks/"
     ogp_site_name: "ML-KEM from Scratch"
     ogp_description_length: 200
