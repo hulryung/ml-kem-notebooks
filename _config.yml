@@ -5,6 +5,18 @@ logo: ""
 
 only_build_toc_files: true
 
+exclude_patterns:
+  - .venv
+  - _build
+  - ko
+  - tests
+  - pqc_edu
+  - pqc_edu.egg-info
+  - docs
+  - .pytest_cache
+  - node_modules
+  - "**.ipynb_checkpoints"
+
 execute:
   execute_notebooks: cache
   timeout: 180
@@ -20,12 +32,26 @@ html:
   use_edit_page_button: false
 
 sphinx:
-  extra_extensions: []
+  extra_extensions:
+    - sphinx_sitemap
+    - sphinxext.opengraph
   config:
     html_show_copyright: false
+    html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/"
     html_static_path: ["_static"]
+    html_css_files:
+      - custom.css
     html_js_files:
       - lang-switcher.js
+    html_meta:
+      description: "Learn post-quantum cryptography by building ML-KEM (Kyber, FIPS 203) from scratch in Python: toy LWE, NTT, Module-LWE, full FIPS 203 implementation with tests, and hybrid X25519+ML-KEM."
+      keywords: "post-quantum cryptography, PQC, ML-KEM, Kyber, FIPS 203, lattice cryptography, LWE, Ring-LWE, NTT, X25519, Python, tutorial, educational"
+      author: "hulryung"
+    sitemap_url_scheme: "{link}"
+    ogp_site_url: "https://hulryung.github.io/ml-kem-notebooks/"
+    ogp_site_name: "ML-KEM from Scratch"
+    ogp_description_length: 200
+    ogp_type: "article"
     html_theme_options:
       use_download_button: true
 

@@ -1,4 +1,5 @@
 (function () {
+  var origin = window.location.origin;
   var path = window.location.pathname;
   var parts = path.split('/').filter(Boolean);
   if (parts.length === 0) return;
@@ -6,15 +7,33 @@
   var rest = path.substring(base.length) || '/';
   var isKo = rest === '/ko' || rest.indexOf('/ko/') === 0;
 
-  var otherUrl, label;
+  var otherPath, otherUrl, label, thisLang, otherLang;
   if (isKo) {
     var stripped = rest.substring(3) || '/';
-    otherUrl = base + stripped;
+    otherPath = base + stripped;
     label = 'English';
+    thisLang = 'ko';
+    otherLang = 'en';
   } else {
-    otherUrl = base + '/ko' + (rest === '/' ? '/' : rest);
+    otherPath = base + '/ko' + (rest === '/' ? '/' : rest);
     label = '한글';
+    thisLang = 'en';
+    otherLang = 'ko';
   }
+  otherUrl = origin + otherPath;
+  var thisUrl = origin + path;
+
+  // Inject hreflang alternate links for SEO (Google cross-language indexing).
+  function addAlt(lang, href) {
+    var link = document.createElement('link');
+    link.rel = 'alternate';
+    link.hreflang = lang;
+    link.href = href;
+    document.head.appendChild(link);
+  }
+  addAlt(thisLang, thisUrl);
+  addAlt(otherLang, otherUrl);
+  addAlt('x-default', isKo ? otherUrl : thisUrl);
 
   function inject() {
     if (document.getElementById('lang-switcher')) return;

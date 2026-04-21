@@ -20,13 +20,27 @@ html:
   use_edit_page_button: false
 
 sphinx:
-  extra_extensions: []
+  extra_extensions:
+    - sphinx_sitemap
+    - sphinxext.opengraph
   config:
     html_show_copyright: false
     language: ko
+    html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/ko/"
     html_static_path: ["_static"]
+    html_css_files:
+      - custom.css
     html_js_files:
       - lang-switcher.js
+    html_meta:
+      description: "ML-KEM (Kyber, FIPS 203)을 Python으로 밑바닥부터 구현하며 배우는 post-quantum cryptography 학습 자료. Toy LWE, NTT, Module-LWE, FIPS 203 전 구현과 테스트, X25519+ML-KEM 하이브리드 키 교환까지."
+      keywords: "post-quantum cryptography, 양자 내성 암호, ML-KEM, Kyber, FIPS 203, 격자 암호, LWE, Ring-LWE, NTT, X25519, Python, 학습, 튜토리얼"
+      author: "hulryung"
+    sitemap_url_scheme: "{link}"
+    ogp_site_url: "https://hulryung.github.io/ml-kem-notebooks/ko/"
+    ogp_site_name: "ML-KEM 밑바닥부터"
+    ogp_description_length: 200
+    ogp_type: "article"
     html_theme_options:
       use_download_button: true
 
