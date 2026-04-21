@@ -20,9 +20,13 @@ html:
   use_edit_page_button: false
 
 sphinx:
+  extra_extensions: []
   config:
     html_show_copyright: false
     language: ko
+    html_static_path: ["_static"]
+    html_js_files:
+      - lang-switcher.js
     html_theme_options:
       use_download_button: true
 

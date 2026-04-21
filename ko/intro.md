@@ -1,7 +1,5 @@
 # ML-KEM 밑바닥부터
 
-🌐 **언어 / Language**: [한글](./intro.html) · [English](../intro.html)
-
 격자 기반 Post-Quantum Cryptography를 Python으로 밑바닥부터 **ML-KEM (Kyber / FIPS 203)** 을 구현하며 학습하는 9개 노트북 커리큘럼입니다.
 
 ```{warning}
