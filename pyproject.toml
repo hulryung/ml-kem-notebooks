@@ -12,6 +12,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+book = ["jupyter-book>=0.15,<2"]
 
 [build-system]
 requires = ["setuptools>=68"]
