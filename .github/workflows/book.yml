@@ -30,8 +30,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev,book]"
 
-      - name: Build the book
+      - name: Build English book
         run: jupyter-book build .
+
+      - name: Build Korean book
+        run: jupyter-book build ko/
+
+      - name: Merge Korean build under /ko
+        run: |
+          mkdir -p _build/html/ko
+          cp -r ko/_build/html/. _build/html/ko/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

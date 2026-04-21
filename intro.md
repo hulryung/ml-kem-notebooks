@@ -1,5 +1,7 @@
 # ML-KEM from Scratch
 
+🌐 **언어 / Language**: [English](./intro.html) · [한글](./ko/intro.html)
+
 A nine-notebook curriculum that teaches lattice-based post-quantum cryptography by implementing **ML-KEM (Kyber / FIPS 203)** from scratch in Python.
 
 ```{warning}

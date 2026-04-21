@@ -1,0 +1,31 @@
+title: "ML-KEM 밑바닥부터"
+author: "hulryung"
+copyright: "2026"
+logo: ""
+
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: cache
+  timeout: 180
+  allow_errors: false
+
+repository:
+  url: https://github.com/hulryung/ml-kem-notebooks
+  branch: main
+
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: false
+
+sphinx:
+  config:
+    html_show_copyright: false
+    language: ko
+    html_theme_options:
+      use_download_button: true
+
+latex:
+  latex_documents:
+    targetname: book.tex
