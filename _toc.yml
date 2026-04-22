@@ -21,3 +21,9 @@ parts:
     chapters:
       - file: notebooks/10_signatures_and_friends
       - file: notebooks/11_deployment_and_faq_glossary
+  - caption: "Part 4 — Quantum Reckoning"
+    chapters:
+      - file: notebooks/12_quantum_basics
+      - file: notebooks/13_qft_and_period
+      - file: notebooks/14_shor_breaks_rsa
+      - file: notebooks/15_shor_vs_lattice
