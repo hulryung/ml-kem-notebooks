@@ -21,3 +21,15 @@ parts:
     chapters:
       - file: notebooks/10_signatures_and_friends
       - file: notebooks/11_deployment_and_faq_glossary
+  - caption: "Part 4 — Quantum Reckoning"
+    chapters:
+      - file: notebooks/12_quantum_basics
+      - file: notebooks/13_qft_and_period
+      - file: notebooks/14_shor_breaks_rsa
+      - file: notebooks/15_shor_vs_lattice
+  - caption: "Part 5 — Breaking It for Real"
+    chapters:
+      - file: notebooks/16_lll_basis_reduction
+      - file: notebooks/17_bkz_and_scaling
+      - file: notebooks/18_primal_attack_on_lwe
+      - file: notebooks/19_ml_kem_parameters_and_estimator
