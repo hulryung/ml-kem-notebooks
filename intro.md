@@ -1,6 +1,6 @@
 # ML-KEM from Scratch
 
-A nine-notebook curriculum that teaches lattice-based post-quantum cryptography by implementing **ML-KEM (Kyber / FIPS 203)** from scratch in Python.
+A 14-notebook curriculum that teaches lattice-based post-quantum cryptography by implementing **ML-KEM (Kyber / FIPS 203)** from scratch in Python — with optional prerequisite primers for beginners and extension notebooks on signatures and real-world deployment.
 
 ```{warning}
 This implementation is educational only. It is not constant-time, not side-channel resistant, and has not been validated against NIST Known-Answer Tests. **Do not use for real encryption.**
@@ -17,19 +17,17 @@ By the end, you will have written — and tested — Python code that:
 
 And you will have *broken* toy-sized LWE yourself, seeing first-hand why the real parameters are out of reach.
 
+## Three parts, one narrative
+
+**Part 1 — Prerequisites (optional).** For readers who want context before the lattice math. Covers the quantum threat model, classical cryptography in 10 minutes, and the exact math vocabulary used later. Skip if you already know what RSA does and are comfortable with modular arithmetic.
+
+**Part 2 — Core: Building ML-KEM.** The main event. Nine notebooks that go from 2-D lattices → toy LWE → breaking toy LWE → polynomial rings and NTT → Ring/Module-LWE → FIPS 203 ML-KEM implementation → tests and benchmarks → hybrid X25519 + ML-KEM → summary.
+
+**Part 3 — Beyond ML-KEM.** Two panoramic notebooks: an overview of lattice and hash-based signatures (ML-DSA, SLH-DSA) and a reference chapter with deployment status, FAQ, and a glossary.
+
 ## Reading order
 
-The notebooks build on each other — read in order. You can skim 04 and 05 if you already know ring-LWE and NTTs.
-
-1. Lattice intro — what is a lattice, why is it hard?
-2. Toy LWE — the LWE problem on small numbers
-3. Attacking toy LWE — break small LWE ourselves
-4. Polynomial rings and NTT — the trick that makes ML-KEM fast
-5. Ring-LWE and Module-LWE — lifting LWE into polynomial rings
-6. ML-KEM spec walk-through — FIPS 203 implementation
-7. Tests and benchmarks — verify the implementation
-8. Hybrid X25519 + ML-KEM — real-world deployment pattern
-9. Wrap-up — what we built, what's next
+Follow the parts in sequence, or jump to Part 2 if you already know the basics.
 
 ## Source
 

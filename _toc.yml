@@ -1,12 +1,23 @@
 format: jb-book
 root: intro
-chapters:
-  - file: notebooks/01_lattice_intro
-  - file: notebooks/02_toy_lwe
-  - file: notebooks/03_attacking_toy_lwe
-  - file: notebooks/04_polynomial_rings
-  - file: notebooks/05_ring_lwe
-  - file: notebooks/06_ml_kem_spec
-  - file: notebooks/07_ml_kem_tests
-  - file: notebooks/08_hybrid_kem
-  - file: notebooks/09_wrap_up
+parts:
+  - caption: "Part 1 — Prerequisites (optional)"
+    chapters:
+      - file: notebooks/00a_why_pqc
+      - file: notebooks/00b_classical_crypto_recap
+      - file: notebooks/00c_math_toolbox
+  - caption: "Part 2 — Core: Building ML-KEM"
+    chapters:
+      - file: notebooks/01_lattice_intro
+      - file: notebooks/02_toy_lwe
+      - file: notebooks/03_attacking_toy_lwe
+      - file: notebooks/04_polynomial_rings
+      - file: notebooks/05_ring_lwe
+      - file: notebooks/06_ml_kem_spec
+      - file: notebooks/07_ml_kem_tests
+      - file: notebooks/08_hybrid_kem
+      - file: notebooks/09_wrap_up
+  - caption: "Part 3 — Beyond ML-KEM"
+    chapters:
+      - file: notebooks/10_signatures_and_friends
+      - file: notebooks/11_deployment_and_faq_glossary
