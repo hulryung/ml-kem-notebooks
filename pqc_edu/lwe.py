@@ -47,10 +47,17 @@ def _sample_gaussian(rng, sigma: float, size, q: int) -> np.ndarray:
     return np.round(rng.normal(0, sigma, size)).astype(np.int64) % q
 
 
-def toy_keygen(n: int, q: int, sigma: float, rng, m: int | None = None) -> Tuple[ToyPublicKey, ToySecretKey]:
+def toy_keygen(n: int, q: int, sigma: float, rng, m: int | None = None, small_secret: bool = False) -> Tuple[ToyPublicKey, ToySecretKey]:
     if m is None:
         m = 2 * n + 10   # enough samples to have many subsets during encryption
-    s = rng.integers(0, q, n)
+    if small_secret:
+        # Centered binomial distribution with eta=2: s[i] in {-2,-1,0,1,2}
+        eta = 2
+        a = rng.integers(0, 2, size=(n, eta)).sum(axis=1)
+        b_cbd = rng.integers(0, 2, size=(n, eta)).sum(axis=1)
+        s = (a - b_cbd) % q
+    else:
+        s = rng.integers(0, q, n)
     A = rng.integers(0, q, (m, n))
     e = _sample_gaussian(rng, sigma, m, q)
     b = (A @ s + e) % q
