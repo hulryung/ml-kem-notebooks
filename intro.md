@@ -1,5 +1,7 @@
 # ML-KEM from Scratch
 
+> 🌐 English · <a href="ko/">한국어</a> · **v1.0** · <a href="https://github.com/hulryung/ml-kem-notebooks/blob/main/CHANGELOG.md">Changelog</a>
+
 A 14-notebook curriculum that teaches lattice-based post-quantum cryptography by implementing **ML-KEM (Kyber / FIPS 203)** from scratch in Python — with optional prerequisite primers for beginners and extension notebooks on signatures and real-world deployment.
 
 ```{warning}

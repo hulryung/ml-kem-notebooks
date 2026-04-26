@@ -1,6 +1,6 @@
 [project]
 name = "pqc-edu"
-version = "0.1.0"
+version = "1.0.0"
 description = "Educational implementation of lattice-based post-quantum cryptography"
 requires-python = ">=3.11"
 dependencies = [

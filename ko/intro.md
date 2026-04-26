@@ -1,5 +1,7 @@
 # ML-KEM 밑바닥부터
 
+> 🌐 <a href="../">English version</a> · 한국어 · **v1.0** · <a href="https://github.com/hulryung/ml-kem-notebooks/blob/main/CHANGELOG.md">Changelog</a>
+
 격자 기반 post-quantum cryptography를 Python으로 밑바닥부터 **ML-KEM (Kyber / FIPS 203)** 을 구현하며 학습하는 14개 노트북 커리큘럼입니다. 초보자를 위한 사전 지식 프렐류드와 signature·실전 배포까지 다루는 확장편을 포함합니다.
 
 ```{warning}
