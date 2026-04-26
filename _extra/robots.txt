@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hulryung.github.io/ml-kem-notebooks/sitemap.xml
-Sitemap: https://hulryung.github.io/ml-kem-notebooks/ko/sitemap.xml
+Sitemap: https://pqc.hulryung.com/sitemap.xml
+Sitemap: https://pqc.hulryung.com/ko/sitemap.xml

@@ -6,8 +6,8 @@ Jupyter notebooks that teach lattice-based post-quantum cryptography by implemen
 
 The notebooks are easiest to read as a rendered book with navigation, math, and search:
 
-- **English**: https://hulryung.github.io/ml-kem-notebooks/
-- **한글**: https://hulryung.github.io/ml-kem-notebooks/ko/
+- **English**: https://pqc.hulryung.com/
+- **한글**: https://pqc.hulryung.com/ko/
 
 The hosted site auto-renders plots, supports cross-notebook navigation, and switches language via the floating button in the top-right of every page.
 
@@ -44,4 +44,4 @@ Read in sequence — each notebook builds on the previous one.
 
 ## 📝 Korean version
 
-한글 버전은 `ko/notebooks/`에 있으며, 코드 셀은 원본과 동일하고 markdown 셀만 번역돼 있습니다. 온라인 책: https://hulryung.github.io/ml-kem-notebooks/ko/
+한글 버전은 `ko/notebooks/`에 있으며, 코드 셀은 원본과 동일하고 markdown 셀만 번역돼 있습니다. 온라인 책: https://pqc.hulryung.com/ko/

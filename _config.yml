@@ -40,7 +40,7 @@ sphinx:
   config:
     html_show_copyright: false
     html_last_updated_fmt: "%Y-%m-%dT%H:%M:%S+00:00"
-    html_baseurl: "https://hulryung.github.io/ml-kem-notebooks/"
+    html_baseurl: "https://pqc.hulryung.com/"
     html_static_path: ["_static"]
     html_extra_path: ["_extra"]
     templates_path: ["_templates"]
@@ -55,7 +55,7 @@ sphinx:
     sitemap_url_scheme: "{link}"
     sitemap_show_lastmod: true
     sitemap_indent: 2
-    ogp_site_url: "https://hulryung.github.io/ml-kem-notebooks/"
+    ogp_site_url: "https://pqc.hulryung.com/"
     ogp_site_name: "ML-KEM from Scratch"
     ogp_description_length: 200
     ogp_type: "article"

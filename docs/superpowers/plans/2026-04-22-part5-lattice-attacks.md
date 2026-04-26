@@ -981,7 +981,7 @@ Verify the four new URLs return 200 after deploy:
 ```bash
 sleep 90
 for nb in 16_lll_basis_reduction 17_bkz_and_scaling 18_primal_attack_on_lwe 19_ml_kem_parameters_and_estimator; do
-  curl -sI "https://hulryung.github.io/ml-kem-notebooks/notebooks/${nb}.html" | head -1
+  curl -sI "https://pqc.hulryung.com/notebooks/${nb}.html" | head -1
 done
 ```
 
