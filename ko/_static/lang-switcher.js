@@ -1,11 +1,19 @@
 (function () {
   var origin = window.location.origin;
+  var hostname = window.location.hostname;
   var path = window.location.pathname;
-  var parts = path.split('/').filter(Boolean);
-  if (parts.length === 0) return;
-  var base = '/' + parts[0];
+
+  // Determine the repo prefix. The book is reachable from two hosts:
+  //   - hulryung.github.io/ml-kem-notebooks/...   (GitHub Pages default URL)
+  //   - pqc.hulryung.com/...                       (custom domain, no prefix)
+  // Treat anything other than hulryung.github.io as "no prefix".
+  var base = '';
+  if (hostname === 'hulryung.github.io') {
+    base = '/ml-kem-notebooks';
+  }
+
   var rest = path.substring(base.length) || '/';
-  var isKo = rest === '/ko' || rest.indexOf('/ko/') === 0;
+  var isKo = rest === '/ko' || rest === '/ko/' || rest.indexOf('/ko/') === 0;
 
   var otherPath, otherUrl, label, thisLang, otherLang;
   if (isKo) {
