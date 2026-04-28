@@ -3,13 +3,14 @@
   var hostname = window.location.hostname;
   var path = window.location.pathname;
 
-  // Determine the repo prefix. The book is reachable from two hosts:
-  //   - hulryung.github.io/ml-kem-notebooks/...   (GitHub Pages default URL)
-  //   - pqc.hulryung.com/...                       (custom domain, no prefix)
-  // Treat anything other than hulryung.github.io as "no prefix".
+  // Determine the base prefix.
+  //   - Custom domain (pqc.hulryung.com, pqmsg.hulryung.com, etc.): no prefix.
+  //   - GitHub Pages default URL (hulryung.github.io/<repo>/...):
+  //       use the first path segment as the repo prefix.
   var base = '';
   if (hostname === 'hulryung.github.io') {
-    base = '/ml-kem-notebooks';
+    var firstSeg = path.split('/').filter(Boolean)[0];
+    if (firstSeg) base = '/' + firstSeg;
   }
 
   var rest = path.substring(base.length) || '/';
